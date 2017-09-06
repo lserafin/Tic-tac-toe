@@ -2,24 +2,21 @@ pragma solidity ^0.4.2;
 
 import "truffle/Assert.sol";
 import "truffle/DeployedAddresses.sol";
-import "../contracts/MetaCoin.sol";
+import "../contracts/TicTacToeGame.sol";
 
 contract TestMetacoin {
 
   function testInitialBalanceUsingDeployedContract() {
-    MetaCoin meta = MetaCoin(DeployedAddresses.MetaCoin());
-
-    uint expected = 10000;
-
-    Assert.equal(meta.getBalance(tx.origin), expected, "Owner should have 10000 MetaCoin initially");
+    TicTacToeGame game = TicTacToeGame(DeployedAddresses.TicTacToeGame());
+    uint8 result = game.checkPosition(0,0);
+    uint8 i = 0;
+    Assert.equal(result, i, "Empty board initially");
   }
-
+  /*
   function testInitialBalanceWithNewMetaCoin() {
-    MetaCoin meta = new MetaCoin();
+    TicTacToeGame game = new TicTacToeGame();
 
-    uint expected = 10000;
-
-    Assert.equal(meta.getBalance(tx.origin), expected, "Owner should have 10000 MetaCoin initially");
-  }
+    Assert.equal(game.getBoard()[0][0], 0, "Empty board initially");
+  }*/
 
 }
