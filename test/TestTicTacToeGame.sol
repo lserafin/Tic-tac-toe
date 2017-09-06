@@ -4,13 +4,15 @@ import "truffle/Assert.sol";
 import "truffle/DeployedAddresses.sol";
 import "../contracts/TicTacToeGame.sol";
 
-contract TestMetacoin {
+contract TestTicTacToeGame {
 
-  function testInitialBalanceUsingDeployedContract() {
+  function testInitialBoardUsingDeployedContract() {
     TicTacToeGame game = TicTacToeGame(DeployedAddresses.TicTacToeGame());
-    uint8 result = game.checkPosition(0,0);
-    uint8 i = 0;
-    Assert.equal(result, i, "Empty board initially");
+
+    uint returned = game.checkPosition(0,0);
+    uint expected = 0;
+    
+    Assert.equal(returned, expected, "Empty board initially");
   }
   /*
   function testInitialBalanceWithNewMetaCoin() {
