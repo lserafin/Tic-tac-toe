@@ -6,13 +6,20 @@ contract TicTacToeGame {
     address opponent;
     
     address winner;
-    
     address currentPlayer;
     
     GameStatus currentGameStatus;
-    
     enum GameStatus { NotStarted, InProgress, Ended }
     
+	/*
+    *
+    *   0 | 1 | 2
+    *  ---+---+---
+    *   3 | 4 | 5
+    *  ---+---+---
+    *   6 | 7 | 8
+    *
+    */
     mapping (uint8 => address) board;
 
 	function TicTacToeGame() public { 
@@ -54,9 +61,9 @@ contract TicTacToeGame {
 	    require(board[position] == address(0)); //Position must be empty
 	    board[position] = msg.sender;
 	    currentPlayer = opponent;
-	    //checkGameStatus();
+	    checkGameStatus();
 	}
-	/*
+	
 	function checkGameStatus() private {
 	    if (board[0] != address(0) && board[0] == board[1] && board[1] == board[2]) { //First row
 	        winner = board[0];
@@ -83,6 +90,6 @@ contract TicTacToeGame {
 	        winner = board[6];
 	        currentGameStatus = GameStatus.Ended;
 	    }
-	}*/
+	}
     
 }
